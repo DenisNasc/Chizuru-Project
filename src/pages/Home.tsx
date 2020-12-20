@@ -1,19 +1,24 @@
 import React from "react";
 
 import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
-import {
-    Grid,
-    Paper,
-    List,
-    ListItem,
-    IconButton,
-    InputBase,
-} from "@material-ui/core";
-import { DataGrid, ColDef, ValueGetterParams } from "@material-ui/data-grid";
-
-import { Search as IconSearch } from "@material-ui/icons";
+import { Grid } from "@material-ui/core";
+import { ColDef, ValueGetterParams } from "@material-ui/data-grid";
 
 import DefaultTemplate from "styles/templates";
+
+import LateralMenu from "components/home/LateralMenu";
+import SearchFIeld from "components/home/SearchFIeld";
+import ProjectsTable from "components/home/ProjectsTable";
+import ActionsColumn from "components/home/ActionsColumn";
+
+export type TypeProject = {
+    id: string;
+    project: string;
+    engineer: string;
+    shipyard: string;
+    updatedAt: string;
+    createdAt: string;
+};
 
 const columns: ColDef[] = [
     {
@@ -65,9 +70,9 @@ const columns: ColDef[] = [
     },
 ];
 
-const rows = [
+const rows: TypeProject[] = [
     {
-        id: 1,
+        id: "1",
         project: "Balsa Maneira",
         engineer: "Fulano da Silva",
         shipyard: "Rio Maguari",
@@ -75,7 +80,7 @@ const rows = [
         createdAt: "20/02/2020",
     },
     {
-        id: 2,
+        id: "2",
         project: "Empurrador Maluco",
         shipyard: "Rio Maguari",
         engineer: "Cicrano dos Santos",
@@ -83,7 +88,7 @@ const rows = [
         createdAt: "13/07/2007",
     },
     {
-        id: 3,
+        id: "3",
         project: "Draga Fodona",
         shipyard: "Rio Maguari",
         engineer: "Beltrano Borges",
@@ -106,13 +111,7 @@ const Home: React.FC = () => {
                     alignItems="center"
                     className={classes.grid1}
                 >
-                    <Paper className={classes.paper}>
-                        <List>
-                            <ListItem>New Project</ListItem>
-                            <ListItem>New Project</ListItem>
-                            <ListItem>New Project</ListItem>
-                        </List>
-                    </Paper>
+                    <LateralMenu />
                 </Grid>
 
                 <Grid
@@ -124,41 +123,11 @@ const Home: React.FC = () => {
                     alignItems="center"
                     className={classes.grid2}
                 >
-                    <Paper component="form" className={classes.root}>
-                        <InputBase
-                            className={classes.input}
-                            placeholder="Search for projects"
-                            inputProps={{ "aria-label": "search projects" }}
-                        />
-                        <IconButton
-                            type="submit"
-                            className={classes.iconButton}
-                            aria-label="search"
-                        >
-                            <IconSearch />
-                        </IconButton>
-                    </Paper>
+                    <SearchFIeld />
 
                     <div className={classes.container}>
-                        <div className={classes.dataGird}>
-                            <DataGrid
-                                rows={rows}
-                                columns={columns}
-                                pageSize={5}
-                                checkboxSelection
-                                headerHeight={60}
-                            />
-                        </div>
-
-                        <Paper className={classes.actionsList}>
-                            <List className={classes.list}>
-                                {rows.map((e) => (
-                                    <ListItem className={classes.listItem}>
-                                        OI
-                                    </ListItem>
-                                ))}
-                            </List>
-                        </Paper>
+                        <ProjectsTable columns={columns} rows={rows} />
+                        <ActionsColumn rows={rows} />
                     </div>
                 </Grid>
             </Grid>
@@ -177,48 +146,10 @@ const useStyles = makeStyles((theme: Theme) =>
         grid2: {
             padding: theme.spacing(3),
         },
-        paper: {
-            borderRadius: "0px",
-            width: "100%",
-            height: "100%",
-        },
         container: {
             width: "100%",
             display: "flex",
             justifyContent: "space-between",
-        },
-        dataGird: { height: 400, width: "90%" },
-        actionsList: {
-            borderRadius: "0px",
-            width: "150px",
-            paddingTop: "60px",
-        },
-        list: { margin: "0px", padding: "0px" },
-        listItem: {
-            height: "52px",
-            margin: "0px",
-            paddingTop: "0px",
-            paddingBottom: "0px",
-        },
-        root: {
-            padding: "2px 4px",
-            marginBottom: theme.spacing(3),
-            display: "flex",
-            alignItems: "center",
-            width: "100%",
-            maxWidth: "50%",
-            alignSelf: "flex-start",
-        },
-        input: {
-            marginLeft: theme.spacing(1),
-            flex: 1,
-        },
-        iconButton: {
-            padding: 10,
-        },
-        divider: {
-            height: 28,
-            margin: 4,
         },
     })
 );

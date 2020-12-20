@@ -9,11 +9,13 @@ import Header from "components/Header";
 const DefaultTemplate: React.FC = ({ children }) => {
     const theme = false ? lightTheme : darkTheme;
     return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Header />
-            {children}
-        </ThemeProvider>
+        <>
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <Header />
+                {children}
+            </ThemeProvider>
+        </>
     );
 };
 
