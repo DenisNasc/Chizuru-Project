@@ -12,6 +12,8 @@ import Login from "pages/Login";
 import Home from "pages/Home";
 
 const Routes: React.FC = () => {
+    // VERIFICAR SE HÁ TOKEN NO LOCALSTORAGE, SE TIVER VERIFICAR SE ELE ESTÁ VÁLIDO PARA O LOGIN, SENÃO REDIRECIONAR PARA A PAGE DE LOGIN PADRÃO
+
     const {
         userContext: { id },
     } = useContext(UserContext);
@@ -19,15 +21,15 @@ const Routes: React.FC = () => {
     return (
         <Router>
             {!id && <Redirect to="/" />}
-            {id && <Redirect from="/" to={`/${id}`} />}
+            {id && <Redirect from="/" to="/home" />}
             <Switch>
                 <Route path="/" exact>
                     <Login />
                 </Route>
-                <Route path="/:userId" exact>
+                <Route path="/home" exact>
                     <Home />
                 </Route>
-                <Route path="/:userId/profile" exact>
+                <Route path="/profile" exact>
                     <Home />
                 </Route>
             </Switch>

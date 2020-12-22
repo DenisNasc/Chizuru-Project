@@ -1,19 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
 import { Button, Divider, Paper, Typography } from "@material-ui/core";
+
+import { UserContext } from "context/UserContext";
+import { USER_LOGIN } from "context/UserContext/actions";
 
 import FormInput from "components/shared/FormInput";
 
 const FormLogin = () => {
     const classes = useStyles();
-
+    const history = useHistory();
     const [formValues, setFormValues] = useState({ email: "", password: "" });
 
-    const handleSubmit = (event: React.FormEvent<HTMLDivElement>) => {
+    const { dispatch } = useContext(UserContext);
+
+    const toLogin = (event: React.FormEvent<HTMLDivElement>) => {
         event.preventDefault();
 
         console.log(formValues);
+
+        // TODOS ESSES DADOS DEVEM SER COLETADOS DO BACKEND
+
+        dispatch({
+            type: USER_LOGIN,
+            payload: {
+                email: formValues.email,
+                name: "Denis Nascimento",
+                projects: [],
+                id: "777",
+                token: "token",
+            },
+        });
+        // history.replace("/home");
     };
 
     return (
@@ -21,7 +41,7 @@ const FormLogin = () => {
             className={classes.form}
             component="form"
             elevation={0}
-            onSubmit={handleSubmit}
+            onSubmit={toLogin}
         >
             <Typography className={classes.typography}>Login</Typography>
             <Divider className={classes.divider} />

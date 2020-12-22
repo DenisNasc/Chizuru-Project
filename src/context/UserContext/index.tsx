@@ -4,7 +4,7 @@ import UserContextReducer from "./reducer";
 import type { TypeUserState, TypeUserAction } from "./types";
 
 const initialState: TypeUserState = {
-    id: "d",
+    id: "",
     email: "",
     name: "",
     token: "",
