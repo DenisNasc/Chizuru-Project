@@ -12,9 +12,21 @@ interface Props {
 
 const ActionsColumn: React.FC<Props> = ({ rows }) => {
     const classes = useStyles();
-    const deleteProject = (type: "delete" | "edit", id: number | string) => {
-        console.log(type, id);
+
+    const deleteProject = (id: string) => {
+        console.log("delete", id);
+        // DELETER O PROJETO NO BANCO DE DADOS
+        // RECEBER A NOVA LISTA DE PROJETOS DO BANCO DE DADOS
+        // ENVIAR A NOVA LISTA DE PROJETOS PRO REDUCER USER
     };
+
+    const editProject = (id: string) => {
+        console.log("edit", id);
+        // ENVIAR OS DADOS EDITADOS PARA O BANCO DE DADOS
+        // RECEBER A NOVA LISTA DE PROJETOS DO BANCO DE DADOS
+        // ENVIAR A NOVA LISTA DE PROJETOS PRO REDUCER USER
+    };
+
     return (
         <Paper className={classes.actionsList}>
             <List className={classes.list}>
@@ -22,14 +34,14 @@ const ActionsColumn: React.FC<Props> = ({ rows }) => {
                     <ListItem className={classes.listItem}>
                         <IconButton
                             className={classes.deleteButton}
-                            onClick={() => deleteProject("delete", id)}
+                            onClick={() => deleteProject(id)}
                         >
                             <IconDelete />
                         </IconButton>
 
                         <IconButton
                             className={classes.editButton}
-                            onClick={() => deleteProject("edit", id)}
+                            onClick={() => editProject(id)}
                         >
                             <IconEdit />
                         </IconButton>

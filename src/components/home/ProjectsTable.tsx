@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
-import { DataGrid, ColDef, ValueGetterParams } from "@material-ui/data-grid";
+import { DataGrid, ColDef } from "@material-ui/data-grid";
 
 import type { TypeProject } from "context/UserContext/types";
 

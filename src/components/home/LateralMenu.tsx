@@ -19,12 +19,13 @@ import FormInput from "components/shared/FormInput";
 
 const LateralMenu: React.FC = () => {
     const classes = useStyles();
+    const { dispatch } = useContext(UserContext);
+
     const [formValues, setFormValues] = useState({
         project: "",
         engineer: "",
         shipyard: "",
     });
-    const { dispatch } = useContext(UserContext);
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -34,6 +35,11 @@ const LateralMenu: React.FC = () => {
 
     const createNewProject = (event: React.FormEvent<HTMLDivElement>) => {
         event.preventDefault();
+        // VERIFICAR SE OS DADOS DO NOVO PROJETO ESTÃO VÁLIDOS
+        // ENVIAR OS DADOS DO NOVO PROJETO PARA O BANCO DE DADOS
+        // RECEBER A NOVA LISTA DE PROJETOS
+
+        // ENVIAR A NOVA LISTA DE PROJETOS PRO REDUCER USER
         dispatch({ type: USER_CREATE_PROJECT, payload: { ...formValues } });
     };
 
