@@ -6,21 +6,12 @@ import { ColDef, ValueGetterParams } from "@material-ui/data-grid";
 
 import DefaultTemplate from "styles/templates";
 
-import { UserContext } from "components/App";
+import { UserContext } from "context/UserContext";
 
 import LateralMenu from "components/home/LateralMenu";
 import SearchFIeld from "components/home/SearchFIeld";
 import ProjectsTable from "components/home/ProjectsTable";
 import ActionsColumn from "components/home/ActionsColumn";
-
-export type TypeProject = {
-    id: string;
-    project: string;
-    engineer: string;
-    shipyard: string;
-    updatedAt: string;
-    createdAt: string;
-};
 
 const columns: ColDef[] = [
     {

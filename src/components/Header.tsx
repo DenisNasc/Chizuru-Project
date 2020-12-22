@@ -13,7 +13,8 @@ import {
     Brightness7 as IconBrightness7,
     Brightness4 as IconBrightness4,
 } from "@material-ui/icons";
-import { UserContext } from "./App";
+
+import { UserContext } from "context/UserContext";
 
 const Header: React.FC = () => {
     const classes = useStyles();

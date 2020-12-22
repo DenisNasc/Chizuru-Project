@@ -6,9 +6,10 @@ import {
     Redirect,
 } from "react-router-dom";
 
+import { UserContext } from "context/UserContext";
+
 import Login from "pages/Login";
 import Home from "pages/Home";
-import { UserContext } from "./App";
 
 const Routes: React.FC = () => {
     const {
