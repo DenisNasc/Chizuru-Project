@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/Chizuru-Project/static/js/main.8f767a4a.chunk.js",
+    "main.js.map": "/Chizuru-Project/static/js/main.8f767a4a.chunk.js.map",
+    "runtime-main.js": "/Chizuru-Project/static/js/runtime-main.d9b3653f.js",
+    "runtime-main.js.map": "/Chizuru-Project/static/js/runtime-main.d9b3653f.js.map",
+    "static/js/2.3cc558d8.chunk.js": "/Chizuru-Project/static/js/2.3cc558d8.chunk.js",
+    "static/js/2.3cc558d8.chunk.js.map": "/Chizuru-Project/static/js/2.3cc558d8.chunk.js.map",
+    "static/js/3.669b33c7.chunk.js": "/Chizuru-Project/static/js/3.669b33c7.chunk.js",
+    "static/js/3.669b33c7.chunk.js.map": "/Chizuru-Project/static/js/3.669b33c7.chunk.js.map",
+    "index.html": "/Chizuru-Project/index.html",
+    "static/js/2.3cc558d8.chunk.js.LICENSE.txt": "/Chizuru-Project/static/js/2.3cc558d8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d9b3653f.js",
+    "static/js/2.3cc558d8.chunk.js",
+    "static/js/main.8f767a4a.chunk.js"
+  ]
+}
