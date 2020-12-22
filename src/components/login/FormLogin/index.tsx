@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         form: {
             borderRadius: "0px",
-            width: "50%",
+            width: "70%",
             height: "100%",
             display: "flex",
             flexDirection: "column",

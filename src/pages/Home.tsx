@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import { ColDef, ValueGetterParams } from "@material-ui/data-grid";
 
 import DefaultTemplate from "styles/templates";
+
+import { UserContext } from "components/App";
 
 import LateralMenu from "components/home/LateralMenu";
 import SearchFIeld from "components/home/SearchFIeld";
@@ -70,35 +72,11 @@ const columns: ColDef[] = [
     },
 ];
 
-const rows: TypeProject[] = [
-    {
-        id: "1",
-        project: "Balsa Maneira",
-        engineer: "Fulano da Silva",
-        shipyard: "Rio Maguari",
-        updatedAt: "20/02/2020",
-        createdAt: "20/02/2020",
-    },
-    {
-        id: "2",
-        project: "Empurrador Maluco",
-        shipyard: "Rio Maguari",
-        engineer: "Cicrano dos Santos",
-        updatedAt: "15/08/2009",
-        createdAt: "13/07/2007",
-    },
-    {
-        id: "3",
-        project: "Draga Fodona",
-        shipyard: "Rio Maguari",
-        engineer: "Beltrano Borges",
-        updatedAt: "09/02/2019",
-        createdAt: "18/07/1998",
-    },
-];
-
 const Home: React.FC = () => {
     const classes = useStyles();
+    const {
+        userContext: { projects },
+    } = useContext(UserContext);
 
     return (
         <DefaultTemplate>
@@ -126,8 +104,8 @@ const Home: React.FC = () => {
                     <SearchFIeld />
 
                     <div className={classes.container}>
-                        <ProjectsTable columns={columns} rows={rows} />
-                        <ActionsColumn rows={rows} />
+                        <ProjectsTable columns={columns} rows={projects} />
+                        <ActionsColumn rows={projects} />
                     </div>
                 </Grid>
             </Grid>

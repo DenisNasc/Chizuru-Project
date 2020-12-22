@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
 import {
     Avatar,
@@ -13,13 +13,37 @@ import {
     Brightness7 as IconBrightness7,
     Brightness4 as IconBrightness4,
 } from "@material-ui/icons";
+import { UserContext } from "./App";
 
 const Header: React.FC = () => {
     const classes = useStyles();
+
+    const history = useHistory();
+    const params = useParams<{ userId: string }>();
+
+    const {
+        userContext: { id },
+        dispatch,
+    } = useContext(UserContext);
+
     const [darkMode, setDarkMode] = useState(false);
 
     const handleTheme = () => {
         setDarkMode(!darkMode);
+    };
+
+    const handleAvatarClick = () => {
+        history.push(`/${params["userId"]}/profile`);
+    };
+
+    const handleLogoutClick = () => {
+        dispatch((state) => ({
+            ...state,
+            id: "",
+            email: "",
+            name: "",
+            projects: [],
+        }));
     };
 
     return (
@@ -29,13 +53,25 @@ const Header: React.FC = () => {
                 <IconButton onClick={handleTheme}>
                     {darkMode ? <IconBrightness4 /> : <IconBrightness7 />}
                 </IconButton>
-                <Divider
-                    orientation="vertical"
-                    flexItem
-                    className={classes.divider}
-                />
-                <Avatar className={classes.avatar} />
-                <Button className={classes.logoutButton}>LOGOUT</Button>
+                {id && (
+                    <>
+                        <Divider
+                            orientation="vertical"
+                            flexItem
+                            className={classes.divider}
+                        />
+                        <Avatar
+                            className={classes.avatar}
+                            onClick={handleAvatarClick}
+                        />
+                        <Button
+                            className={classes.logoutButton}
+                            onClick={handleLogoutClick}
+                        >
+                            LOGOUT
+                        </Button>
+                    </>
+                )}
             </nav>
         </Paper>
     );
