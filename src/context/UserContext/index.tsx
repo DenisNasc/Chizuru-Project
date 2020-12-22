@@ -1,23 +1,9 @@
-import React, { createContext } from "react";
+import React, { createContext, useReducer } from "react";
 
-export type TypeProject = {
-    id: string;
-    project: string;
-    engineer: string;
-    shipyard: string;
-    updatedAt: string;
-    createdAt: string;
-};
+import UserContextReducer from "./reducer";
+import type { TypeUserState, TypeUserAction } from "./types";
 
-export type TypeUser = {
-    id: string;
-    email: string;
-    name: string;
-    token: string;
-    projects: TypeProject[];
-};
-
-const initialValue: TypeUser = {
+const initialState: TypeUserState = {
     id: "d",
     email: "",
     name: "",
@@ -51,16 +37,17 @@ const initialValue: TypeUser = {
 };
 
 export const UserContext = createContext<{
-    userContext: TypeUser;
-    dispatch: React.Dispatch<React.SetStateAction<TypeUser>>;
+    userContext: TypeUserState;
+    dispatch: React.Dispatch<TypeUserAction>;
 }>({
-    userContext: initialValue,
+    userContext: initialState,
     dispatch: () => {},
 });
 
 const UserContextProvider: React.FC = ({ children }) => {
-    const [userContextValue, setUserContextValue] = React.useState(
-        initialValue
+    const [userContextValue, setUserContextValue] = useReducer(
+        UserContextReducer,
+        initialState
     );
 
     return (

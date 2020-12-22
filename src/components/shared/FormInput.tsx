@@ -10,6 +10,7 @@ interface Props {
     type?: string;
     setValue: React.Dispatch<React.SetStateAction<any>>;
     values: any;
+    variant?: "outlined" | "filled" | "standard";
 }
 
 const FormInput: React.FC<Props> = ({
@@ -17,6 +18,7 @@ const FormInput: React.FC<Props> = ({
     label,
     required,
     type = "text",
+    variant = "outlined",
     values,
     setValue,
 }) => {
@@ -37,6 +39,7 @@ const FormInput: React.FC<Props> = ({
             label={label}
             type={type}
             required={required}
+            variant={variant}
             value={values[id]}
             onChange={handleTextInput}
         />

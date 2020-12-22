@@ -4,7 +4,7 @@ import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
 import { Paper, List, ListItem, IconButton } from "@material-ui/core";
 import { Delete as IconDelete, Edit as IconEdit } from "@material-ui/icons";
 
-import type { TypeProject } from "context/UserContext";
+import type { TypeProject } from "context/UserContext/types";
 
 interface Props {
     rows: TypeProject[];

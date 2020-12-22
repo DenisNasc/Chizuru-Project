@@ -15,6 +15,7 @@ import {
 } from "@material-ui/icons";
 
 import { UserContext } from "context/UserContext";
+import { USER_LOGOUT } from "context/UserContext/actions";
 
 const Header: React.FC = () => {
     const classes = useStyles();
@@ -38,13 +39,7 @@ const Header: React.FC = () => {
     };
 
     const handleLogoutClick = () => {
-        dispatch((state) => ({
-            ...state,
-            id: "",
-            email: "",
-            name: "",
-            projects: [],
-        }));
+        dispatch({ type: USER_LOGOUT, payload: {} });
     };
 
     return (
