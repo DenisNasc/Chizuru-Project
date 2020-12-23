@@ -12,7 +12,7 @@ const App: React.FC = () => {
         <AppContextProvider>
             <UserContextProvider>
                 <StyleProvider>
-                    <Routes />;
+                    <Routes />
                 </StyleProvider>
             </UserContextProvider>
         </AppContextProvider>
