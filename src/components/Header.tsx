@@ -18,6 +18,9 @@ import {
 import { UserContext } from "context/UserContext";
 import { USER_LOGOUT } from "context/UserContext/actions";
 
+import { AppContext } from "context/AppContext";
+import { APP_CHANGE_THEME } from "context/AppContext/actions";
+
 const Header: React.FC = () => {
     const classes = useStyles();
 
@@ -26,13 +29,16 @@ const Header: React.FC = () => {
 
     const {
         userContext: { id },
-        dispatch,
+        dispatch: dispatchUser,
     } = useContext(UserContext);
 
-    const [darkMode, setDarkMode] = useState(false);
+    const {
+        appContext: { darkMode },
+        dispatch: dispatchApp,
+    } = useContext(AppContext);
 
     const handleTheme = () => {
-        setDarkMode(!darkMode);
+        dispatchApp({ type: APP_CHANGE_THEME, payload: {} });
     };
 
     const handleAvatarClick = () => {
@@ -40,7 +46,7 @@ const Header: React.FC = () => {
     };
 
     const handleLogoutClick = () => {
-        dispatch({ type: USER_LOGOUT, payload: {} });
+        dispatchUser({ type: USER_LOGOUT, payload: {} });
     };
 
     return (

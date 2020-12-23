@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
 import { DataGrid, ColDef } from "@material-ui/data-grid";
 
 import type { TypeProject } from "context/UserContext/types";
+import { AppContext } from "context/AppContext";
 
 interface Props {
     rows: TypeProject[];
@@ -12,11 +13,14 @@ interface Props {
 
 const ProjectsTable: React.FC<Props> = ({ rows, columns }) => {
     const classes = useStyles();
+    const {
+        appContext: { filter },
+    } = useContext(AppContext);
 
     return (
         <div className={classes.dataGird}>
             <DataGrid
-                rows={rows}
+                rows={rows.filter((e) => e.project.includes(filter))}
                 columns={columns}
                 pageSize={5}
                 checkboxSelection

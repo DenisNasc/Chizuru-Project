@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
 
 import { Paper, IconButton, InputBase } from "@material-ui/core";
 import { Search as IconSearch } from "@material-ui/icons";
 
+import { AppContext } from "context/AppContext";
+import { APP_SET_FILTER_QUERY } from "context/AppContext/actions";
+
 const SearchFIeld: React.FC = () => {
     const classes = useStyles();
+    const { dispatch } = useContext(AppContext);
+
     const [filter, setFilter] = useState("");
 
     const handleFilter = (
@@ -18,6 +23,8 @@ const SearchFIeld: React.FC = () => {
 
     const filterProjectsByName = (event: React.FormEvent<HTMLDivElement>) => {
         event.preventDefault();
+        console.log("submit");
+        dispatch({ type: APP_SET_FILTER_QUERY, payload: { filter } });
     };
 
     return (
