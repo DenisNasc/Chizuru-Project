@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import { TablePagination } from "@material-ui/core";
+import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
+import {TablePagination} from '@material-ui/core';
 
-import type { TypeProject } from "context/UserContext/types";
-import TablePaginationActions from "./TablePaginationsActions";
+import type {TypeProject} from 'context/UserContext/types';
+import TablePaginationActions from './TablePaginationsActions';
 
 interface Props {
     rows: TypeProject[];
@@ -14,13 +14,7 @@ interface Props {
     setRowsPerPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Pagination: React.FC<Props> = ({
-    rows,
-    rowsPerPage,
-    page,
-    setRowsPerPage,
-    setPage,
-}) => {
+const Pagination: React.FC<Props> = ({rows, rowsPerPage, page, setRowsPerPage, setPage}) => {
     const classes = useStyles();
 
     const handleChangePage = (
@@ -41,13 +35,13 @@ const Pagination: React.FC<Props> = ({
         <TablePagination
             align="center"
             className={classes.pagination}
-            rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+            rowsPerPageOptions={[5, 10, 25, {label: 'All', value: -1}]}
             colSpan={0}
             count={rows.length}
             rowsPerPage={rowsPerPage}
             page={page}
             SelectProps={{
-                inputProps: { "aria-label": "rows per page" },
+                inputProps: {'aria-label': 'rows per page'},
                 native: true,
             }}
             onChangePage={handleChangePage}

@@ -1,34 +1,27 @@
-import React, { useContext } from "react";
+import React, {useContext} from 'react';
 
-import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
-import {
-    Paper,
-    TableContainer,
-    Table,
-    TableBody,
-    TableRow,
-    TableFooter,
-} from "@material-ui/core";
+import {Theme, makeStyles, createStyles} from '@material-ui/core/styles';
+import {Paper, TableContainer, Table, TableBody, TableRow, TableFooter} from '@material-ui/core';
 
-import type { TypeProject } from "context/UserContext/types";
-import { AppContext } from "context/AppContext";
+import type {TypeProject} from 'context/UserContext/types';
+import {AppContext} from 'context/AppContext';
 
-import Head from "./Head";
-import Body from "./Body";
-import Pagination from "./Pagination";
+import Head from './Head';
+import Body from './Body';
+import Pagination from './Pagination';
 
 interface Props {
     rows: TypeProject[];
 }
 
-const ProjectsTable: React.FC<Props> = ({ rows }) => {
+const ProjectsTable: React.FC<Props> = ({rows}) => {
     const classes = useStyles();
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     const {
-        appContext: { filter },
+        appContext: {filter},
     } = useContext(AppContext);
 
     console.log(rows);
@@ -38,12 +31,7 @@ const ProjectsTable: React.FC<Props> = ({ rows }) => {
             <Table>
                 <Head />
                 <TableBody className={classes.tableBody}>
-                    <Body
-                        filter={filter}
-                        rows={rows}
-                        page={page}
-                        rowsPerPage={rowsPerPage}
-                    />
+                    <Body filter={filter} rows={rows} page={page} rowsPerPage={rowsPerPage} />
                 </TableBody>
 
                 <TableFooter>
@@ -67,8 +55,8 @@ export default ProjectsTable;
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         tableContainer: {
-            maxHeight: "600px",
-            overflowY: "auto",
+            maxHeight: '600px',
+            overflowY: 'auto',
         },
         tableBody: {},
     })

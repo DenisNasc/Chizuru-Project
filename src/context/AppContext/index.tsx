@@ -1,12 +1,12 @@
-import React, { createContext, useReducer } from "react";
+import React, {createContext, useReducer} from 'react';
 
-import AppContextReducer from "./reducer";
-import type { TypeAppState, TypeAppAction } from "./types";
+import AppContextReducer from './reducer';
+import type {TypeAppState, TypeAppAction} from './types';
 
 const initialState: TypeAppState = {
     darkMode: false,
-    language: "pt-br",
-    filter: "",
+    language: 'pt-br',
+    filter: '',
 };
 
 export const AppContext = createContext<{
@@ -17,11 +17,8 @@ export const AppContext = createContext<{
     dispatch: () => {},
 });
 
-const AppContextProvider: React.FC = ({ children }) => {
-    const [AppContextValue, setAppContextValue] = useReducer(
-        AppContextReducer,
-        initialState
-    );
+const AppContextProvider: React.FC = ({children}) => {
+    const [AppContextValue, setAppContextValue] = useReducer(AppContextReducer, initialState);
 
     return (
         <AppContext.Provider
