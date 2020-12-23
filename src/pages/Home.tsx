@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 
 import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
-import { ColDef, ValueGetterParams } from "@material-ui/data-grid";
 
 import DefaultTemplate from "styles/templates";
 
@@ -11,57 +10,6 @@ import { UserContext } from "context/UserContext";
 import LateralMenu from "components/home/LateralMenu";
 import SearchFIeld from "components/home/SearchFIeld";
 import ProjectsTable from "components/home/ProjectsTable";
-import ActionsColumn from "components/home/ActionsColumn";
-
-const columns: ColDef[] = [
-    {
-        field: "id",
-        headerName: "ID",
-        align: "center",
-        headerAlign: "center",
-        width: 70,
-    },
-    {
-        field: "project",
-        headerName: "Project",
-        description: "Project's name",
-        align: "center",
-        headerAlign: "center",
-        width: 400,
-    },
-    {
-        field: "engineer",
-        headerName: "Engineer",
-        description: "Engineer's name",
-        align: "center",
-        headerAlign: "center",
-        width: 250,
-    },
-    {
-        field: "shipyard",
-        headerName: "Shipyard",
-        description: "Shipyard's name",
-        align: "center",
-        headerAlign: "center",
-        width: 250,
-    },
-    {
-        field: "createdAt",
-        headerName: "Created At",
-        description: "When project was create",
-        align: "center",
-        headerAlign: "center",
-        width: 130,
-    },
-    {
-        field: "updatedAt",
-        headerName: "Updated At",
-        description: "Last time this project was changed",
-        align: "center",
-        headerAlign: "center",
-        width: 160,
-    },
-];
 
 const Home: React.FC = () => {
     const classes = useStyles();
@@ -94,10 +42,7 @@ const Home: React.FC = () => {
                 >
                     <SearchFIeld />
 
-                    <div className={classes.container}>
-                        <ProjectsTable columns={columns} rows={projects} />
-                        <ActionsColumn rows={projects} />
-                    </div>
+                    <ProjectsTable rows={projects} />
                 </Grid>
             </Grid>
         </DefaultTemplate>
@@ -115,10 +60,6 @@ const useStyles = makeStyles((theme: Theme) =>
         grid2: {
             padding: theme.spacing(3),
         },
-        container: {
-            width: "100%",
-            display: "flex",
-            justifyContent: "space-between",
-        },
+        table: {},
     })
 );

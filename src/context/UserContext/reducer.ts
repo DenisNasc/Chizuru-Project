@@ -13,9 +13,9 @@ const UserContextReducer: TypeUserContextReducer = (state, action) => {
     switch (type) {
         case USER_CREATE_PROJECT: {
             const newProject: TypeProject = {
-                id: new Date().getTime(),
-                createdAt: new Date(),
-                updatedAt: new Date(),
+                id: `${new Date().getTime()}`,
+                createdAt: "1998",
+                updatedAt: "2000",
                 ...payload,
             };
 
