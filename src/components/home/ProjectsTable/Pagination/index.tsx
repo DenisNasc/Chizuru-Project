@@ -3,7 +3,8 @@ import React from 'react';
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 import {TablePagination} from '@material-ui/core';
 
-import type {TypeProject} from 'context/UserContext/types';
+import type {TypeProject} from 'state/reducers/user/types';
+
 import TablePaginationActions from './TablePaginationsActions';
 
 interface Props {

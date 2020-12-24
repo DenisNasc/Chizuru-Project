@@ -1,20 +1,18 @@
-import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 
-import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
-import { Button, Divider, Paper, Typography } from "@material-ui/core";
+import {Theme, makeStyles, createStyles} from '@material-ui/core/styles';
+import {Button, Divider, Paper, Typography} from '@material-ui/core';
 
-import { UserContext } from "context/UserContext";
-import { USER_LOGIN } from "context/UserContext/actions";
+import {USER_LOGIN} from 'state/actions/user';
 
-import FormInput from "components/shared/FormInput";
+import FormInput from 'components/shared/FormInput';
 
 const FormLogin = () => {
     const classes = useStyles();
-    const history = useHistory();
-    const [formValues, setFormValues] = useState({ email: "", password: "" });
+    const [formValues, setFormValues] = useState({email: '', password: ''});
 
-    const { dispatch } = useContext(UserContext);
+    const dispatch = useDispatch();
 
     const toLogin = (event: React.FormEvent<HTMLDivElement>) => {
         event.preventDefault();
@@ -27,22 +25,17 @@ const FormLogin = () => {
             type: USER_LOGIN,
             payload: {
                 email: formValues.email,
-                name: "Denis Nascimento",
+                name: 'Denis Nascimento',
                 projects: [],
-                id: "777",
-                token: "token",
+                id: '777',
+                token: 'token',
             },
         });
         // history.replace("/home");
     };
 
     return (
-        <Paper
-            className={classes.form}
-            component="form"
-            elevation={0}
-            onSubmit={toLogin}
-        >
+        <Paper className={classes.form} component="form" elevation={0} onSubmit={toLogin}>
             <Typography className={classes.typography}>Login</Typography>
             <Divider className={classes.divider} />
             <FormInput
@@ -71,18 +64,18 @@ export default FormLogin;
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         form: {
-            borderRadius: "0px",
-            width: "70%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            borderRadius: '0px',
+            width: '70%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             padding: theme.spacing(3),
         },
         typography: {
-            alignSelf: "flex-start",
+            alignSelf: 'flex-start',
             marginBottom: theme.spacing(1),
         },
-        divider: { width: "100%", height: "1px" },
+        divider: {width: '100%', height: '1px'},
     })
 );

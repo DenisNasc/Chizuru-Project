@@ -1,3 +1,5 @@
+import type {Reducer, Action} from 'redux';
+
 export type TypeProject = {
     id: string;
     project: string;
@@ -7,8 +9,6 @@ export type TypeProject = {
     createdAt: string;
 };
 
-export type TypeUserAction = { type: string; payload: any };
-
 export type TypeUserState = {
     id: string;
     email: string;
@@ -17,7 +17,8 @@ export type TypeUserState = {
     projects: TypeProject[];
 };
 
-export type TypeUserContextReducer = (
-    state: TypeUserState,
-    action: TypeUserAction
-) => TypeUserState;
+export type TypeUserPayload = any;
+
+export type TypeUserAction = Action<string, TypeUserPayload>;
+
+export type TypeUserReducer = Reducer<TypeUserState, TypeUserAction>;

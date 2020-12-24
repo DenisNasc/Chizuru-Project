@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
 import {Theme, makeStyles, createStyles} from '@material-ui/core/styles';
 import {Paper, TableContainer, Table, TableBody, TableRow, TableFooter} from '@material-ui/core';
 
-import type {TypeProject} from 'context/UserContext/types';
-import {AppContext} from 'context/AppContext';
+import type {TypeProject} from 'state/reducers/user/types';
+import useReduxStore from 'hooks/useReduxStore';
 
 import Head from './Head';
 import Body from './Body';
@@ -21,8 +21,8 @@ const ProjectsTable: React.FC<Props> = ({rows}) => {
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     const {
-        appContext: {filter},
-    } = useContext(AppContext);
+        app: {filter},
+    } = useReduxStore();
 
     console.log(rows);
 

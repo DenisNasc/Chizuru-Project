@@ -1,21 +1,18 @@
 import React from 'react';
-
+import {Provider} from 'react-redux';
 import Routes from 'components/Routes';
 
-import AppContextProvider from 'context/AppContext';
-import UserContextProvider from 'context/UserContext';
+import store from 'state/store';
 
 import StyleProvider from 'styles';
 
 const App: React.FC = () => {
     return (
-        <AppContextProvider>
-            <UserContextProvider>
-                <StyleProvider>
-                    <Routes />
-                </StyleProvider>
-            </UserContextProvider>
-        </AppContextProvider>
+        <Provider store={store}>
+            <StyleProvider>
+                <Routes />
+            </StyleProvider>
+        </Provider>
     );
 };
 

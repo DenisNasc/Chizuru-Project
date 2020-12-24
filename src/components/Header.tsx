@@ -1,34 +1,30 @@
-import React, {useContext} from 'react';
+import React from 'react';
+import {useDispatch} from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
 
 import {Theme, makeStyles, createStyles} from '@material-ui/core/styles';
 import {Avatar, Button, Divider, IconButton, Paper, Typography} from '@material-ui/core';
 import {Brightness7 as IconBrightness7, Brightness4 as IconBrightness4} from '@material-ui/icons';
 
-import {UserContext} from 'context/UserContext';
-import {USER_LOGOUT} from 'context/UserContext/actions';
+import useReduxStore from 'hooks/useReduxStore';
 
-import {AppContext} from 'context/AppContext';
-import {APP_CHANGE_THEME} from 'context/AppContext/actions';
+import {APP_CHANGE_THEME} from 'state/actions/app';
+import {USER_LOGOUT} from 'state/actions/user';
 
 const Header: React.FC = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
 
     const history = useHistory();
     const params = useParams<{userId: string}>();
 
     const {
-        userContext: {id},
-        dispatch: dispatchUser,
-    } = useContext(UserContext);
-
-    const {
-        appContext: {darkMode},
-        dispatch: dispatchApp,
-    } = useContext(AppContext);
+        user: {id},
+        app: {darkMode},
+    } = useReduxStore();
 
     const handleTheme = () => {
-        dispatchApp({type: APP_CHANGE_THEME, payload: {}});
+        dispatch({type: APP_CHANGE_THEME, payload: {}});
     };
 
     const handleAvatarClick = () => {
@@ -36,7 +32,7 @@ const Header: React.FC = () => {
     };
 
     const handleLogoutClick = () => {
-        dispatchUser({type: USER_LOGOUT, payload: {}});
+        dispatch({type: USER_LOGOUT, payload: {}});
     };
 
     return (

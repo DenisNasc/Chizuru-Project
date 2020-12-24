@@ -1,7 +1,7 @@
 import React from 'react';
 import {TableRow, TableCell} from '@material-ui/core';
 
-import type {TypeProject} from 'context/UserContext/types';
+import type {TypeProject} from 'state/reducers/user/types';
 
 import Actions from './Actions';
 

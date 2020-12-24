@@ -1,7 +1,7 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
-import {UserContext} from 'context/UserContext';
+import useReduxStore from 'hooks/useReduxStore';
 
 import Login from 'pages/Login';
 import Home from 'pages/Home';
@@ -10,8 +10,8 @@ const Routes: React.FC = () => {
     // VERIFICAR SE HÁ TOKEN NO LOCALSTORAGE, SE TIVER VERIFICAR SE ELE ESTÁ VÁLIDO PARA O LOGIN, SENÃO REDIRECIONAR PARA A PAGE DE LOGIN PADRÃO
 
     const {
-        userContext: {id},
-    } = useContext(UserContext);
+        user: {id},
+    } = useReduxStore();
 
     return (
         <Router>

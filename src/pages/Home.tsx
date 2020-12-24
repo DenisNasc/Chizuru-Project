@@ -1,21 +1,21 @@
-import React, { useContext } from "react";
+import React from 'react';
 
-import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
-import { Grid } from "@material-ui/core";
+import {Theme, makeStyles, createStyles} from '@material-ui/core/styles';
+import {Grid} from '@material-ui/core';
 
-import DefaultTemplate from "styles/templates";
+import DefaultTemplate from 'styles/templates';
 
-import { UserContext } from "context/UserContext";
+import useReduxStore from 'hooks/useReduxStore';
 
-import LateralMenu from "components/home/LateralMenu";
-import SearchFIeld from "components/home/SearchFIeld";
-import ProjectsTable from "components/home/ProjectsTable";
+import LateralMenu from 'components/home/LateralMenu';
+import SearchFIeld from 'components/home/SearchFIeld';
+import ProjectsTable from 'components/home/ProjectsTable';
 
 const Home: React.FC = () => {
     const classes = useStyles();
     const {
-        userContext: { projects },
-    } = useContext(UserContext);
+        user: {projects},
+    } = useReduxStore();
 
     return (
         <DefaultTemplate>
@@ -53,9 +53,9 @@ export default Home;
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        gridContainer: { height: `calc(100vh - 60px)` },
+        gridContainer: {height: `calc(100vh - 60px)`},
         grid1: {
-            minWidth: "300px",
+            minWidth: '300px',
         },
         grid2: {
             padding: theme.spacing(3),

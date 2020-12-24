@@ -1,30 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 
-import { Theme, makeStyles, createStyles } from "@material-ui/core/styles";
-import {
-    Button,
-    Collapse,
-    Paper,
-    List,
-    ListItem,
-    IconButton,
-    Typography,
-} from "@material-ui/core";
-import { Close as IconClose, Check as IconCheck } from "@material-ui/icons";
+import {Theme, makeStyles, createStyles} from '@material-ui/core/styles';
+import {Button, Collapse, Paper, List, ListItem, IconButton, Typography} from '@material-ui/core';
+import {Close as IconClose, Check as IconCheck} from '@material-ui/icons';
 
-import { UserContext } from "context/UserContext";
-import { USER_CREATE_PROJECT } from "context/UserContext/actions";
+import {USER_CREATE_PROJECT} from 'state/actions/user';
 
-import FormInput from "components/shared/FormInput";
+import FormInput from 'components/shared/FormInput';
 
 const LateralMenu: React.FC = () => {
     const classes = useStyles();
-    const { dispatch } = useContext(UserContext);
+    const dispatch = useDispatch();
 
     const [formValues, setFormValues] = useState({
-        project: "",
-        engineer: "",
-        shipyard: "",
+        project: '',
+        engineer: '',
+        shipyard: '',
     });
 
     const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +32,7 @@ const LateralMenu: React.FC = () => {
         // RECEBER A NOVA LISTA DE PROJETOS
 
         // ENVIAR A NOVA LISTA DE PROJETOS PRO REDUCER USER
-        dispatch({ type: USER_CREATE_PROJECT, payload: { ...formValues } });
+        dispatch({type: USER_CREATE_PROJECT, payload: {...formValues}});
     };
 
     return (
@@ -55,12 +47,7 @@ const LateralMenu: React.FC = () => {
                         New project
                     </Button>
                 </ListItem>
-                <Collapse
-                    in={isOpen}
-                    className={classes.collapse}
-                    timeout="auto"
-                    unmountOnExit
-                >
+                <Collapse in={isOpen} className={classes.collapse} timeout="auto" unmountOnExit>
                     <Paper
                         component="form"
                         className={classes.collapsePaper}
@@ -124,36 +111,36 @@ export default LateralMenu;
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         paper: {
-            borderRadius: "0px",
-            width: "100%",
-            height: "100%",
+            borderRadius: '0px',
+            width: '100%',
+            height: '100%',
         },
         list: {
-            margin: "0px",
-            padding: "0px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "flex-start",
+            margin: '0px',
+            padding: '0px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
         },
         listItem: {
-            margin: "0px",
-            padding: "0px",
+            margin: '0px',
+            padding: '0px',
         },
         buttonNewProject: {
-            width: "100%",
-            borderRadius: "24px",
+            width: '100%',
+            borderRadius: '24px',
             margin: theme.spacing(3),
             background: theme.palette.success.main,
-            "&:hover": { background: theme.palette.success.main, opacity: 0.7 },
+            '&:hover': {background: theme.palette.success.main, opacity: 0.7},
         },
         collapse: {
-            width: "90%",
+            width: '90%',
         },
         collapsePaper: {},
-        collapseTitle: { textAlign: "center" },
-        collapseActions: { display: "flex", justifyContent: "flex-end" },
-        buttonClose: { color: theme.palette.error.main },
-        buttonCheck: { color: theme.palette.success.main },
+        collapseTitle: {textAlign: 'center'},
+        collapseActions: {display: 'flex', justifyContent: 'flex-end'},
+        buttonClose: {color: theme.palette.error.main},
+        buttonCheck: {color: theme.palette.success.main},
     })
 );
